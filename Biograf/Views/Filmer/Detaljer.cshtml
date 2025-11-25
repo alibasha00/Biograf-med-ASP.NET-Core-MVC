@@ -1,0 +1,73 @@
+@model Biograf.Models.Film
+
+@{
+    ViewData["Title"] = Model.Titel;
+    var forestallningar = ViewBag.KommandeForestallningar as List<Biograf.Models.Forestallning>;
+}
+
+<h1>@Model.Titel</h1>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Filmdetaljer</h5>
+                <dl class="row">
+                    <dt class="col-sm-3">Genre</dt>
+                    <dd class="col-sm-9">@Model.Genre</dd>
+
+                    <dt class="col-sm-3">Beskrivning</dt>
+                    <dd class="col-sm-9">@Model.Beskrivning</dd>
+
+                    <dt class="col-sm-3">Längd</dt>
+                    <dd class="col-sm-9">@Model.Langd minuter</dd>
+
+                    <dt class="col-sm-3">Pris</dt>
+                    <dd class="col-sm-9">@Model.Pris kr</dd>
+                </dl>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Kommande föreställningar</h5>
+                @if (forestallningar != null && forestallningar.Any())
+                {
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Datum och tid</th>
+                                <th>Salong</th>
+                                <th>Platser</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var forestallning in forestallningar)
+                            {
+                                <tr>
+                                    <td>@forestallning.DatumTid.ToString("yyyy-MM-dd HH:mm")</td>
+                                    <td>Salong @(forestallning.Salong?.Salongsnummer.ToString() ?? "")</td>
+                                    <td>@(forestallning.Salong?.AntalStolar.ToString() ?? "") platser</td>
+                                    <td>
+                                        <a asp-controller="Bokningar" asp-action="ValjPlats" asp-route-id="@forestallning.Id" class="btn btn-sm btn-success">
+                                            Boka plats
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <p class="text-muted">Inga kommande föreställningar för denna film.</p>
+                }
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <a asp-action="Index" class="btn btn-secondary">Tillbaka till filmlistan</a>
+    </div>
+</div>

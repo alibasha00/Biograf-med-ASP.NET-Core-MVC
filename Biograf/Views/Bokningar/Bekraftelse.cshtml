@@ -1,0 +1,63 @@
+@model Biograf.Models.Bokning
+
+@{
+    ViewData["Title"] = "Bokningsbekräftelse";
+}
+
+<div class="text-center">
+    <h1 class="text-success">
+        <i class="bi bi-check-circle"></i>
+        Bokning bekräftad!
+    </h1>
+</div>
+
+<div class="row justify-content-center mt-4">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Din bokning</h5>
+                <div class="alert alert-success">
+                    <strong>Bokningsnummer: @Model.Bokningsnummer</strong>
+                    <p class="mb-0 mt-2">Spara detta bokningsnummer för att kunna söka upp din bokning senare.</p>
+                </div>
+
+                @if (Model.Forestallning != null)
+                {
+                    <dl class="row mt-3">
+                        <dt class="col-sm-4">Film</dt>
+                        <dd class="col-sm-8">@(Model.Forestallning.Film?.Titel ?? "")</dd>
+
+                        <dt class="col-sm-4">Datum och tid</dt>
+                        <dd class="col-sm-8">@Model.Forestallning.DatumTid.ToString("yyyy-MM-dd HH:mm")</dd>
+
+                        <dt class="col-sm-4">Salong</dt>
+                        <dd class="col-sm-8">Salong @(Model.Forestallning.Salong?.Salongsnummer.ToString() ?? "")</dd>
+
+                        <dt class="col-sm-4">Stolnummer</dt>
+                        <dd class="col-sm-8">@Model.Stolnummer</dd>
+
+                        <dt class="col-sm-4">Namn</dt>
+                        <dd class="col-sm-8">@Model.KundNamn</dd>
+
+                        <dt class="col-sm-4">E-postadress</dt>
+                        <dd class="col-sm-8">@Model.KundEmail</dd>
+
+                        <dt class="col-sm-4">Pris</dt>
+                        <dd class="col-sm-8">@(Model.Forestallning.Film?.Pris.ToString() ?? "") kr</dd>
+                    </dl>
+                }
+
+                <div class="mt-4">
+                    <p class="text-muted">
+                        <strong>Viktigt!</strong> Ta med dig ditt bokningsnummer när du kommer till biografen.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-center mt-4">
+    <a asp-controller="Filmer" asp-action="Index" class="btn btn-primary">Tillbaka till filmer</a>
+    <a asp-controller="Forestallningar" asp-action="Index" class="btn btn-secondary">Visa föreställningar</a>
+</div>

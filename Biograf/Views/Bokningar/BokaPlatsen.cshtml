@@ -1,0 +1,70 @@
+@model Biograf.Models.Bokning
+
+@{
+    ViewData["Title"] = "Boka plats";
+    var forestallning = ViewBag.Forestallning as Biograf.Models.Forestallning;
+}
+
+<h1>Bekräfta din bokning</h1>
+
+@if (forestallning != null)
+{
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Bokningsinformation</h5>
+            <dl class="row">
+                <dt class="col-sm-3">Film</dt>
+                <dd class="col-sm-9">@forestallning.Film?.Titel</dd>
+
+                <dt class="col-sm-3">Datum och tid</dt>
+                <dd class="col-sm-9">@forestallning.DatumTid.ToString("yyyy-MM-dd HH:mm")</dd>
+
+                <dt class="col-sm-3">Salong</dt>
+                <dd class="col-sm-9">Salong @forestallning.Salong?.Salongsnummer</dd>
+
+                <dt class="col-sm-3">Stolnummer</dt>
+                <dd class="col-sm-9">@Model.Stolnummer</dd>
+
+                <dt class="col-sm-3">Pris</dt>
+                <dd class="col-sm-9">@forestallning.Film?.Pris kr</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Fyll i dina uppgifter</h5>
+                    <form asp-action="BokaPlatsen" method="post">
+                        <div asp-validation-summary="All" class="text-danger mb-3"></div>
+                        
+                        <input type="hidden" asp-for="ForestallningId" />
+                        <input type="hidden" asp-for="Stolnummer" />
+
+                        <div class="form-group mb-3">
+                            <label asp-for="KundNamn" class="control-label">Namn</label>
+                            <input asp-for="KundNamn" class="form-control" />
+                            <span asp-validation-for="KundNamn" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="KundEmail" class="control-label">E-postadress</label>
+                            <input asp-for="KundEmail" class="form-control" type="email" />
+                            <span asp-validation-for="KundEmail" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" value="Bekräfta bokning" class="btn btn-success" />
+                            <a asp-action="ValjPlats" asp-route-id="@Model.ForestallningId" class="btn btn-secondary">Avbryt</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

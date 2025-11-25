@@ -1,0 +1,60 @@
+@model Biograf.Models.Bokning
+
+@{
+    ViewData["Title"] = "Din bokning";
+}
+
+<h1>Din bokning</h1>
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Bokningsinformation</h5>
+                <div class="alert alert-info">
+                    <strong>Bokningsnummer: @Model.Bokningsnummer</strong>
+                </div>
+
+                @if (Model.Forestallning != null)
+                {
+                    <dl class="row">
+                        <dt class="col-sm-4">Film</dt>
+                        <dd class="col-sm-8">@(Model.Forestallning.Film?.Titel ?? "")</dd>
+
+                        <dt class="col-sm-4">Genre</dt>
+                        <dd class="col-sm-8">@(Model.Forestallning.Film?.Genre ?? "")</dd>
+
+                        <dt class="col-sm-4">Datum och tid</dt>
+                        <dd class="col-sm-8">@Model.Forestallning.DatumTid.ToString("yyyy-MM-dd HH:mm")</dd>
+
+                        <dt class="col-sm-4">Salong</dt>
+                        <dd class="col-sm-8">Salong @(Model.Forestallning.Salong?.Salongsnummer.ToString() ?? "")</dd>
+
+                        <dt class="col-sm-4">Stolnummer</dt>
+                        <dd class="col-sm-8">@Model.Stolnummer</dd>
+
+                        <dt class="col-sm-4">Namn</dt>
+                        <dd class="col-sm-8">@Model.KundNamn</dd>
+
+                        <dt class="col-sm-4">E-postadress</dt>
+                        <dd class="col-sm-8">@Model.KundEmail</dd>
+
+                        <dt class="col-sm-4">Pris</dt>
+                        <dd class="col-sm-8">@(Model.Forestallning.Film?.Pris.ToString() ?? "") kr</dd>
+                    </dl>
+                }
+
+                <div class="mt-3">
+                    <p class="text-muted">
+                        <strong>Viktigt!</strong> Ta med dig ditt bokningsnummer när du kommer till biografen.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-center mt-4">
+    <a asp-action="SokBokning" class="btn btn-secondary">Sök annan bokning</a>
+    <a asp-controller="Filmer" asp-action="Index" class="btn btn-primary">Tillbaka till filmer</a>
+</div>

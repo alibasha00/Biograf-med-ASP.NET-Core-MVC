@@ -1,0 +1,51 @@
+@model IEnumerable<Biograf.Models.Forestallning>
+
+@{
+    ViewData["Title"] = "Föreställningar";
+}
+
+<h1>Kommande föreställningar</h1>
+
+@if (Model.Any())
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Film</th>
+                <th>Genre</th>
+                <th>Datum och tid</th>
+                <th>Salong</th>
+                <th>Pris</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var forestallning in Model)
+            {
+                <tr>
+                    <td>
+                        @if (forestallning.Film != null)
+                        {
+                            <a asp-controller="Filmer" asp-action="Detaljer" asp-route-id="@forestallning.Film.Id">
+                                @forestallning.Film.Titel
+                            </a>
+                        }
+                    </td>
+                    <td>@(forestallning.Film?.Genre ?? "")</td>
+                    <td>@forestallning.DatumTid.ToString("yyyy-MM-dd HH:mm")</td>
+                    <td>Salong @(forestallning.Salong?.Salongsnummer.ToString() ?? "") (@(forestallning.Salong?.AntalStolar.ToString() ?? "") platser)</td>
+                    <td>@(forestallning.Film?.Pris.ToString() ?? "") kr</td>
+                    <td>
+                        <a asp-controller="Bokningar" asp-action="ValjPlats" asp-route-id="@forestallning.Id" class="btn btn-sm btn-success">
+                            Boka plats
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p class="alert alert-info">Inga kommande föreställningar.</p>
+}

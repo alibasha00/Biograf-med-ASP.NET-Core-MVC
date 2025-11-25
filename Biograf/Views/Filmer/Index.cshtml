@@ -1,0 +1,39 @@
+@model IEnumerable<Biograf.Models.Film>
+
+@{
+    ViewData["Title"] = "Alla filmer";
+}
+
+<h1>Alla filmer</h1>
+
+<div class="row">
+    @foreach (var film in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">@film.Titel</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">@film.Genre</h6>
+                    <p class="card-text">
+                        @if (film.Beskrivning.Length > 150)
+                        {
+                            @film.Beskrivning.Substring(0, 150)
+                            <text>...</text>
+                        }
+                        else
+                        {
+                            @film.Beskrivning
+                        }
+                    </p>
+                    <p class="card-text">
+                        <small class="text-muted">Längd: @film.Langd minuter</small><br />
+                        <strong>Pris: @film.Pris kr</strong>
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <a asp-action="Detaljer" asp-route-id="@film.Id" class="btn btn-primary">Visa detaljer</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
