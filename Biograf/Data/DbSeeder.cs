@@ -31,7 +31,7 @@ namespace Biograf.Data
                         Genre = "Science Fiction",
                         Beskrivning = "En tjuv som stjäl företagshemligheter genom att använda teknologi för att dela drömmar erbjuds en chans att få sitt gamla liv tillbaka som betalning för att plantera en idé i en företagsledares undermedvetna.",
                         Langd = 148,
-                        Pris = 120
+                       Pris = 120
                     },
                     new Film
                     {
@@ -92,7 +92,7 @@ namespace Biograf.Data
                 var idag = DateTime.Today;
                 var forestallningar = new List<Forestallning>();
 
-                // Inception - Salong 1
+                // Inception - Salong 1 (flera visningar)
                 forestallningar.Add(new Forestallning
                 {
                     FilmId = filmer[0].Id,
@@ -105,8 +105,26 @@ namespace Biograf.Data
                     SalongId = salonger[0].Id,
                     DatumTid = idag.AddDays(2).AddHours(21)
                 });
+                forestallningar.Add(new Forestallning
+                {
+                    FilmId = filmer[0].Id,
+                    SalongId = salonger[0].Id,
+                    DatumTid = idag.AddDays(3).AddHours(16).AddMinutes(30)
+                });
+                forestallningar.Add(new Forestallning
+                {
+                    FilmId = filmer[0].Id,
+                    SalongId = salonger[0].Id,
+                    DatumTid = idag.AddDays(5).AddHours(19).AddMinutes(15)
+                });
+                forestallningar.Add(new Forestallning
+                {
+                    FilmId = filmer[0].Id,
+                    SalongId = salonger[0].Id,
+                    DatumTid = idag.AddDays(7).AddHours(20).AddMinutes(30)
+                });
 
-                // The Shawshank Redemption - Salong 2
+                // The Shawshank Redemption - Salong 2 (flera visningar)
                 forestallningar.Add(new Forestallning
                 {
                     FilmId = filmer[1].Id,
@@ -119,8 +137,20 @@ namespace Biograf.Data
                     SalongId = salonger[1].Id,
                     DatumTid = idag.AddDays(3).AddHours(17)
                 });
+                forestallningar.Add(new Forestallning
+                {
+                    FilmId = filmer[1].Id,
+                    SalongId = salonger[1].Id,
+                    DatumTid = idag.AddDays(4).AddHours(15).AddMinutes(45)
+                });
+                forestallningar.Add(new Forestallning
+                {
+                    FilmId = filmer[1].Id,
+                    SalongId = salonger[1].Id,
+                    DatumTid = idag.AddDays(6).AddHours(18).AddMinutes(30)
+                });
 
-                // The Dark Knight - Salong 3
+                // The Dark Knight - Salong 3 (flera visningar)
                 forestallningar.Add(new Forestallning
                 {
                     FilmId = filmer[2].Id,
@@ -131,26 +161,80 @@ namespace Biograf.Data
                 {
                     FilmId = filmer[2].Id,
                     SalongId = salonger[2].Id,
+                    DatumTid = idag.AddDays(2).AddHours(17).AddMinutes(30)
+                });
+                forestallningar.Add(new Forestallning
+                {
+                    FilmId = filmer[2].Id,
+                    SalongId = salonger[2].Id,
                     DatumTid = idag.AddDays(4).AddHours(19)
                 });
+                forestallningar.Add(new Forestallning
+                {
+                    FilmId = filmer[2].Id,
+                    SalongId = salonger[2].Id,
+                    DatumTid = idag.AddDays(5).AddHours(21).AddMinutes(15)
+                });
+                forestallningar.Add(new Forestallning
+                {
+                    FilmId = filmer[2].Id,
+                    SalongId = salonger[2].Id,
+                    DatumTid = idag.AddDays(7).AddHours(18)
+                });
 
-                // Forrest Gump - Salong 4
+                // Forrest Gump - Salong 4 (flera visningar)
                 forestallningar.Add(new Forestallning
                 {
                     FilmId = filmer[3].Id,
                     SalongId = salonger[3].Id,
                     DatumTid = idag.AddDays(2).AddHours(18).AddMinutes(30)
                 });
+                forestallningar.Add(new Forestallning
+                {
+                    FilmId = filmer[3].Id,
+                    SalongId = salonger[3].Id,
+                    DatumTid = idag.AddDays(3).AddHours(20)
+                });
+                forestallningar.Add(new Forestallning
+                {
+                    FilmId = filmer[3].Id,
+                    SalongId = salonger[3].Id,
+                    DatumTid = idag.AddDays(6).AddHours(16).AddMinutes(45)
+                });
 
-                // Pulp Fiction - Salong 2
+                // Pulp Fiction - Salong 2 (flera visningar)
                 forestallningar.Add(new Forestallning
                 {
                     FilmId = filmer[4].Id,
                     SalongId = salonger[1].Id,
                     DatumTid = idag.AddDays(2).AddHours(20).AddMinutes(30)
                 });
+                forestallningar.Add(new Forestallning
+                {
+                    FilmId = filmer[4].Id,
+                    SalongId = salonger[1].Id,
+                    DatumTid = idag.AddDays(4).AddHours(21).AddMinutes(30)
+                });
+                forestallningar.Add(new Forestallning
+                {
+                    FilmId = filmer[4].Id,
+                    SalongId = salonger[1].Id,
+                    DatumTid = idag.AddDays(5).AddHours(19).AddMinutes(45)
+                });
+                forestallningar.Add(new Forestallning
+                {
+                    FilmId = filmer[4].Id,
+                    SalongId = salonger[1].Id,
+                    DatumTid = idag.AddDays(7).AddHours(17).AddMinutes(30)
+                });
 
-                // Interstellar - Salong 3
+                // Interstellar - Salong 3 (flera visningar)
+                forestallningar.Add(new Forestallning
+                {
+                    FilmId = filmer[5].Id,
+                    SalongId = salonger[2].Id,
+                    DatumTid = idag.AddDays(1).AddHours(16)
+                });
                 forestallningar.Add(new Forestallning
                 {
                     FilmId = filmer[5].Id,
@@ -162,6 +246,12 @@ namespace Biograf.Data
                     FilmId = filmer[5].Id,
                     SalongId = salonger[2].Id,
                     DatumTid = idag.AddDays(5).AddHours(20)
+                });
+                forestallningar.Add(new Forestallning
+                {
+                    FilmId = filmer[5].Id,
+                    SalongId = salonger[2].Id,
+                    DatumTid = idag.AddDays(6).AddHours(21).AddMinutes(30)
                 });
 
                 context.Forestallningar.AddRange(forestallningar);
