@@ -4,53 +4,68 @@
     ViewData["Title"] = "Bokningsbekräftelse";
 }
 
-<div class="text-center">
-    <h1 class="text-success">
-        <i class="bi bi-check-circle"></i>
-        Bokning bekräftad!
-    </h1>
+<div class="text-center mb-4">
+    <div class="success-icon mb-3">
+        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-check-circle-fill text-success" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+        </svg>
+    </div>
+    <h1 class="display-4 text-success">Bokning bekräftad!</h1>
+    <p class="lead">Din bokning är nu registrerad</p>
 </div>
 
-<div class="row justify-content-center mt-4">
+<div class="row justify-content-center">
     <div class="col-md-8">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Din bokning</h5>
-                <div class="alert alert-success">
-                    <strong>Bokningsnummer: @Model.Bokningsnummer</strong>
-                    <p class="mb-0 mt-2">Spara detta bokningsnummer för att kunna söka upp din bokning senare.</p>
+        <div class="card shadow-lg border-0">
+            <div class="card-body p-4">
+                <div class="alert alert-success d-flex align-items-center mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-ticket-perforated me-3" viewBox="0 0 16 16">
+                        <path d="M4 4.85v.9h1v-.9zm7 0v.9h1v-.9zm-7 1.8v.9h1v-.9zm7 0v.9h1v-.9zm-7 1.8v.9h1v-.9zm7 0v.9h1v-.9zm-7 1.8v.9h1v-.9zm7 0v.9h1v-.9z"/>
+                        <path d="M1.5 3A1.5 1.5 0 0 0 0 4.5V6a.5.5 0 0 0 .5.5 1.5 1.5 0 1 1 0 3 .5.5 0 0 0-.5.5v1.5A1.5 1.5 0 0 0 1.5 13h13a1.5 1.5 0 0 0 1.5-1.5V10a.5.5 0 0 0-.5-.5 1.5 1.5 0 0 1 0-3A.5.5 0 0 0 16 6V4.5A1.5 1.5 0 0 0 14.5 3zM1 4.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v1.05a2.5 2.5 0 0 0 0 4.9v1.05a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-1.05a2.5 2.5 0 0 0 0-4.9z"/>
+                    </svg>
+                    <div>
+                        <strong class="fs-5">Bokningsnummer: @Model.Bokningsnummer</strong>
+                        <p class="mb-0 mt-1">Spara detta nummer för att kunna söka upp din bokning senare</p>
+                    </div>
                 </div>
 
                 @if (Model.Forestallning != null)
                 {
-                    <dl class="row mt-3">
-                        <dt class="col-sm-4">Film</dt>
-                        <dd class="col-sm-8">@(Model.Forestallning.Film?.Titel ?? "")</dd>
-
-                        <dt class="col-sm-4">Datum och tid</dt>
-                        <dd class="col-sm-8">@Model.Forestallning.DatumTid.ToString("yyyy-MM-dd HH:mm")</dd>
-
-                        <dt class="col-sm-4">Salong</dt>
-                        <dd class="col-sm-8">Salong @(Model.Forestallning.Salong?.Salongsnummer.ToString() ?? "")</dd>
-
-                        <dt class="col-sm-4">Stolnummer</dt>
-                        <dd class="col-sm-8">@Model.Stolnummer</dd>
-
-                        <dt class="col-sm-4">Namn</dt>
-                        <dd class="col-sm-8">@Model.KundNamn</dd>
-
-                        <dt class="col-sm-4">E-postadress</dt>
-                        <dd class="col-sm-8">@Model.KundEmail</dd>
-
-                        <dt class="col-sm-4">Pris</dt>
-                        <dd class="col-sm-8">@(Model.Forestallning.Film?.Pris.ToString() ?? "") kr</dd>
-                    </dl>
+                    <h5 class="mb-3">Bokningsdetaljer</h5>
+                    <div class="booking-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Film</span>
+                            <span class="detail-value">@(Model.Forestallning.Film?.Titel ?? "")</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Datum och tid</span>
+                            <span class="detail-value">@Model.Forestallning.DatumTid.ToString("yyyy-MM-dd HH:mm")</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Salong</span>
+                            <span class="detail-value">Salong @(Model.Forestallning.Salong?.Salongsnummer.ToString() ?? "")</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Stolnummer</span>
+                            <span class="detail-value">Stol @Model.Stolnummer</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Namn</span>
+                            <span class="detail-value">@Model.KundNamn</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">E-post</span>
+                            <span class="detail-value">@Model.KundEmail</span>
+                        </div>
+                        <div class="detail-row border-top pt-3 mt-3">
+                            <span class="detail-label fs-5"><strong>Pris</strong></span>
+                            <span class="detail-value fs-5"><strong>@(Model.Forestallning.Film?.Pris.ToString() ?? "") kr</strong></span>
+                        </div>
+                    </div>
                 }
 
-                <div class="mt-4">
-                    <p class="text-muted">
-                        <strong>Viktigt!</strong> Ta med dig ditt bokningsnummer när du kommer till biografen.
-                    </p>
+                <div class="alert alert-info mt-4">
+                    <strong>Viktigt!</strong> Ta med dig ditt bokningsnummer när du kommer till biografen.
                 </div>
             </div>
         </div>
@@ -58,6 +73,51 @@
 </div>
 
 <div class="text-center mt-4">
-    <a asp-controller="Filmer" asp-action="Index" class="btn btn-primary">Tillbaka till filmer</a>
-    <a asp-controller="Forestallningar" asp-action="Index" class="btn btn-secondary">Visa föreställningar</a>
+    <a asp-controller="Filmer" asp-action="Index" class="btn btn-primary btn-lg me-2">Tillbaka till filmer</a>
+    <a asp-controller="Forestallningar" asp-action="Index" class="btn btn-secondary btn-lg">Visa föreställningar</a>
 </div>
+
+<style>
+    .success-icon {
+        animation: scaleIn 0.5s ease-out;
+    }
+    
+    @@keyframes scaleIn {
+        from {
+            transform: scale(0);
+            opacity: 0;
+        }
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+    
+    .booking-details {
+        background: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+    }
+    
+    .detail-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px solid #dee2e6;
+    }
+    
+    .detail-row:last-child {
+        border-bottom: none;
+    }
+    
+    .detail-label {
+        font-weight: 500;
+        color: #6c757d;
+    }
+    
+    .detail-value {
+        font-weight: 600;
+        color: #212529;
+    }
+</style>
