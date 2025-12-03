@@ -28,6 +28,7 @@ namespace Biograf.Data
                 entity.Property(f => f.Titel).IsRequired().HasMaxLength(200);
                 entity.Property(f => f.Genre).IsRequired().HasMaxLength(100);
                 entity.Property(f => f.Beskrivning).IsRequired().HasMaxLength(2000);
+                entity.Property(f => f.BildUrl).HasMaxLength(500);
                 entity.Property(f => f.Pris).HasColumnType("decimal(18,2)");
             });
 

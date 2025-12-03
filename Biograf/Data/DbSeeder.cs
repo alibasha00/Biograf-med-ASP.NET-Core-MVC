@@ -31,7 +31,8 @@ namespace Biograf.Data
                         Genre = "Science Fiction",
                         Beskrivning = "En tjuv som stjäl företagshemligheter genom att använda teknologi för att dela drömmar erbjuds en chans att få sitt gamla liv tillbaka som betalning för att plantera en idé i en företagsledares undermedvetna.",
                         Langd = 148,
-                       Pris = 120
+                       Pris = 120,
+                        BildUrl = "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg"
                     },
                     new Film
                     {
@@ -39,7 +40,8 @@ namespace Biograf.Data
                         Genre = "Drama",
                         Beskrivning = "Två fängslade män skapar en stark vänskap över flera år och finner tröst och slutlig återlösning genom handling av vardaglig vänlighet.",
                         Langd = 142,
-                        Pris = 110
+                        Pris = 110,
+                        BildUrl = "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg"
                     },
                     new Film
                     {
@@ -47,7 +49,8 @@ namespace Biograf.Data
                         Genre = "Action",
                         Beskrivning = "När hotet känt som Jokern föder kaos och förödelse över folket i Gotham, måste den maskerade vakten Batman acceptera ett av de största psykologiska och fysiska testerna.",
                         Langd = 152,
-                        Pris = 130
+                        Pris = 130,
+                        BildUrl = "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg"
                     },
                     new Film
                     {
@@ -55,7 +58,8 @@ namespace Biograf.Data
                         Genre = "Drama",
                         Beskrivning = "Decennierna av livet för Forrest Gump, en naiv man från Alabama som bevittnar och omedvetet påverkar flera avgörande historiska händelser i 1900-talets USA.",
                         Langd = 142,
-                        Pris = 110
+                        Pris = 110,
+                        BildUrl = "https://m.media-amazon.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg"
                     },
                     new Film
                     {
@@ -63,7 +67,8 @@ namespace Biograf.Data
                         Genre = "Thriller",
                         Beskrivning = "Livets vägar för två gangsters, en boxare, en gangsterhustru och två restauranggrånare sammanflätas i fyra berättelser om våld och återlösning.",
                         Langd = 154,
-                        Pris = 115
+                        Pris = 115,
+                        BildUrl = "https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg"
                     },
                     new Film
                     {
@@ -71,7 +76,8 @@ namespace Biograf.Data
                         Genre = "Science Fiction",
                         Beskrivning = "En grupp utforskare använder en nyupptäckt passage för att överstiga begränsningarna för mänsklig rymdfärd och erövra de enorma avstånden som är inblandade i en interstellär resa.",
                         Langd = 169,
-                        Pris = 125
+                        Pris = 125,
+                        BildUrl = "https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg"
                     }
                 };
                 context.Filmer.AddRange(filmer);

@@ -14,13 +14,17 @@
     {
         <div class="col-md-4 mb-4">
             <div class="card h-100 film-card">
+                @if (!string.IsNullOrEmpty(film.BildUrl))
+                {
+                    <img src="@film.BildUrl" class="card-img-top" alt="@film.Titel" style="height: 450px; object-fit: cover;">
+                }
                 <div class="card-body">
                     <h5 class="card-title">@film.Titel</h5>
                     <span class="badge bg-info mb-2">@film.Genre</span>
                     <p class="card-text">
-                        @if (film.Beskrivning.Length > 150)
+                        @if (film.Beskrivning.Length > 100)
                         {
-                            @film.Beskrivning.Substring(0, 150)
+                            @film.Beskrivning.Substring(0, 100)
                             <text>...</text>
                         }
                         else
@@ -46,11 +50,20 @@
     .film-card {
         border: none;
         transition: all 0.3s ease;
+        overflow: hidden;
     }
     
     .film-card:hover {
         transform: translateY(-10px);
         box-shadow: 0 15px 35px rgba(0,0,0,0.2) !important;
+    }
+    
+    .film-card img {
+        transition: transform 0.3s ease;
+    }
+    
+    .film-card:hover img {
+        transform: scale(1.05);
     }
     
     .badge {

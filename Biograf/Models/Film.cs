@@ -11,6 +11,7 @@ namespace Biograf.Models
         public string Beskrivning { get; set; } = string.Empty;
         public int Langd { get; set; } // i minuter
         public decimal Pris { get; set; }
+        public string BildUrl { get; set; } = string.Empty;
 
         // Navigation property
         public ICollection<Forestallning> Forestallningar { get; set; } = new List<Forestallning>();
